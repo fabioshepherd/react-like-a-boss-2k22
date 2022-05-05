@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { Grid, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
 import './styles/styles.css';
 
 const StyledContainer = styled(Container)(() => ({
@@ -31,89 +33,11 @@ function App() {
       <HeaderGrid container alignItems={'center'} justifyContent='center'>
         <Grid item>React like a BOSS! 2K22</Grid>
       </HeaderGrid>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
-      <div>asdfasdfasdfa</div>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        {/* <Route path='expenses' element={<Expenses />} />
+        <Route path='invoices' element={<Invoices />} /> */}
+      </Routes>
     </StyledContainer>
   );
 }
