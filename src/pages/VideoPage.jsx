@@ -66,6 +66,7 @@ const VideoPage = () => {
             ref={videoRef}
             playsInline
             muted={isMuted}
+            loop
           />
         </Grid>
         <Grid item>

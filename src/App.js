@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import Container from '@mui/material/Container';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import GifPage from './pages/GifPage';
 import HomePage from './pages/HomePage';
-import UsersPage from './pages/UsersPage';
+import PokemonPage from './pages/PokemonPage';
 import VideoPage from './pages/VideoPage';
 import './styles/styles.css';
 
@@ -48,7 +48,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='gifs' element={<GifPage />} />
-        <Route path='users' element={<UsersPage />} />
+        <Route path='pokemon' element={<PokemonPage />} />
         <Route path='video' element={<VideoPage />} />
       </Routes>
     </StyledContainer>

@@ -3,79 +3,41 @@ import { ButtonBase, Chip, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import PageTitle from '../components/common/PageTitle';
-
-const MenuContainer = styled(ButtonBase)(() => ({
-  width: '100%',
-  height: '100%',
-  textAlign: 'center',
-  boxShadow: '0px 0px 32px 0px rgba(0,0,0,0.11)',
-  padding: '80px 40px',
-  display: 'flex',
-  flexDirection: 'column',
-}));
+import PageCard from '../components/Home/PageCard';
 
 const HomePage = () => {
   const navigate = useNavigate();
 
   return (
     <>
-      <PageTitle title={'Ciao mondo!'} />
+      <PageTitle title={'Ciao Ajeje!'} />
       <Grid container spacing={3} justifyContent='center'>
         <Grid item xs={6} sm={4}>
-          <MenuContainer
+          <PageCard
+            label={'Gif'}
+            badges={['axios', 'useState()']}
             onClick={() => {
               navigate('gifs');
             }}
-          >
-            <Typography variant='h4'>RANDOM GIFs</Typography>
-            <Grid container spacing={1} justifyContent='center'>
-              <Grid item>
-                <Chip label='axios' size='small' />
-              </Grid>
-              <Grid item>
-                <Chip label='useState()' size='small' />
-              </Grid>
-            </Grid>
-          </MenuContainer>
+          />
         </Grid>
         <Grid item xs={6} sm={4}>
-          <MenuContainer
+          <PageCard
+            label={'Pokemon'}
+            badges={['axios', 'useState()']}
             onClick={() => {
-              navigate('users');
+              navigate('pokemon');
             }}
-          >
-            <Typography variant='h4'>RANDOM USERs</Typography>
-            <Grid container spacing={1} justifyContent='center'>
-              <Grid item>
-                <Chip label='axios' size='small' />
-              </Grid>
-              <Grid item>
-                <Chip label='useState()' size='small' />
-              </Grid>
-            </Grid>
-          </MenuContainer>
+          />
         </Grid>
         <Grid item xs={6} sm={4}>
-          <MenuContainer
+          <PageCard
+            label={'Video'}
+            badges={['useRef()', 'useState()', 'video']}
             onClick={() => {
-              navigate('VIDEO');
+              navigate('video');
             }}
-          >
-            <Typography variant='h4' component={'div'}>
-              VIDEO
-            </Typography>
-            <Grid container spacing={1} justifyContent='center'>
-              <Grid item>
-                <Chip label='useRef()' size='small' />
-              </Grid>
-              <Grid item>
-                <Chip label='useState()' size='small' />
-              </Grid>
-              <Grid item>
-                <Chip label='video' size='small' />
-              </Grid>
-            </Grid>
-          </MenuContainer>
+          />
         </Grid>
       </Grid>
     </>
