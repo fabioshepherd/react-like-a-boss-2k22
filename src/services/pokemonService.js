@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getPokemon = async (limit) => {
+export const getPokemonList = async (limit) => {
   const pokemonResponse = await axios.get(
     'https://pokeapi.co/api/v2/pokemon/',
     {
@@ -8,6 +8,14 @@ export const getPokemon = async (limit) => {
         limit,
       },
     }
+  );
+
+  return pokemonResponse;
+};
+
+export const getPokemonByNumber = async (number) => {
+  const pokemonResponse = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon/${number}`
   );
 
   return pokemonResponse;

@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import GifPage from './pages/GifPage';
 import HomePage from './pages/HomePage';
+import PokemonDetailPage from './pages/PokemonDetailPage';
 import PokemonPage from './pages/PokemonPage';
 import VideoPage from './pages/VideoPage';
 import './styles/styles.css';
@@ -50,6 +51,7 @@ function App() {
         <Route path='gifs' element={<GifPage />} />
         <Route path='pokemon' element={<PokemonPage />} />
         <Route path='video' element={<VideoPage />} />
+        <Route path='pokemon/:number' element={<PokemonDetailPage />} />
       </Routes>
     </StyledContainer>
   );
