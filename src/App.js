@@ -5,6 +5,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import GifPage from './pages/GifPage';
 import HomePage from './pages/HomePage';
 import UsersPage from './pages/UsersPage';
+import VideoPage from './pages/VideoPage';
 import './styles/styles.css';
 
 const StyledContainer = styled(Container)(() => ({
@@ -48,6 +49,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='gifs' element={<GifPage />} />
         <Route path='users' element={<UsersPage />} />
+        <Route path='video' element={<VideoPage />} />
       </Routes>
     </StyledContainer>
   );
