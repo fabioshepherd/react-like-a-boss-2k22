@@ -15,7 +15,7 @@ const HomePage = () => {
         <Grid item xs={6} sm={4}>
           <PageCard
             label={'Gif'}
-            badges={['axios', 'useState()']}
+            badges={['axios', 'useState()', 'useEffect()', 'uncontrolled form']}
             onClick={() => {
               navigate('gifs');
             }}
@@ -24,7 +24,7 @@ const HomePage = () => {
         <Grid item xs={6} sm={4}>
           <PageCard
             label={'Pokemon'}
-            badges={['axios', 'useState()']}
+            badges={['axios', 'useState()', 'useParams()']}
             onClick={() => {
               navigate('pokemon');
             }}

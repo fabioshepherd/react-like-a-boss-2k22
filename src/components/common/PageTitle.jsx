@@ -4,6 +4,7 @@ import { Typography } from '@mui/material';
 const PageTitleDiv = styled.div(() => ({
   padding: '16px 0',
   marginBottom: '24px',
+  textTransform: 'capitalize',
 }));
 
 const PageTitle = ({ title }) => {

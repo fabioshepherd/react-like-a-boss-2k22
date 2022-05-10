@@ -10,6 +10,7 @@ const PokemonCard = ({ number, name, onClick }) => {
         padding: '16px 8px',
         boxShadow: '0px 0px 21px 0px rgba(0,0,0,0.1)',
         borderRadius: '16px',
+        cursor: 'pointer',
       }}
       onClick={onClick}
     >

@@ -25,6 +25,7 @@ const HeaderGrid = styled(Grid)(() => ({
   fontWeight: '500',
   fontSize: '40px',
   transition: 'all 100ms ease',
+  zIndex: 1000,
   ':hover': {
     fontSize: '48px',
     fontWeight: '700',
