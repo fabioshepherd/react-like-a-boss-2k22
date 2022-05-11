@@ -1,16 +1,8 @@
-import renderer from 'react-test-renderer';
-it('Hover Test', () => {
-    const component = renderer.create(
-     <span id='firstSpan' onClick={() => {console.log("test2")}}> TEST </span>
-      );
+import renderer from "react-test-renderer";
+import PageTitle from "../src/components/common/PageTitle";
+it("PageTitle Test", () => {
+  const component = renderer.create(<PageTitle title={"Prova"} />);
 
-      let json = component.toJSON();
-      expect(json).toMatchSnapshot();
-
-      renderer.act(() => {
-        json.props.onClick();
-      }); 
-
-      json = component.toJSON();
-      expect(json).toMatchSnapshot();
+  let json = component.toJSON();
+  expect(json).toMatchSnapshot();
 });

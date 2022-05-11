@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageTitle Test 1`] = `
+Array [
+  <style
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": ".css-cc5o4n{padding:16px 0;margin-bottom:24px;text-transform:capitalize;}",
+      }
+    }
+    data-emotion="css cc5o4n"
+  />,
+  <div
+    className="css-cc5o4n"
+  >
+    <style
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": ".css-gepadz-MuiTypography-root{margin:0;font-family:\\"Roboto\\",\\"Helvetica\\",\\"Arial\\",sans-serif;font-weight:400;font-size:3rem;line-height:1.167;letter-spacing:0em;}",
+        }
+      }
+      data-emotion="css gepadz-MuiTypography-root"
+    />
+    <h3
+      className="MuiTypography-root MuiTypography-h3 css-gepadz-MuiTypography-root"
+    >
+      Prova
+    </h3>
+  </div>,
+]
+`;
