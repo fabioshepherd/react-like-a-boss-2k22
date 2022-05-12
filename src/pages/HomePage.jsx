@@ -23,6 +23,15 @@ const HomePage = () => {
         </Grid>
         <Grid item xs={6} sm={4}>
           <PageCard
+            label={'Gif Controlled Form'}
+            badges={['axios', 'useState()', 'useEffect()', 'controlled form']}
+            onClick={() => {
+              navigate('gifs-controlled');
+            }}
+          />
+        </Grid>
+        <Grid item xs={6} sm={4}>
+          <PageCard
             label={'Pokemon'}
             badges={['axios', 'useState()', 'useParams()']}
             onClick={() => {

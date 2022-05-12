@@ -3,6 +3,7 @@ import { Height, Scale } from '@mui/icons-material';
 import { Chip, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import FrontBackPokemonImg from '../components/Pokemon/FrontBackPokemonImg';
 import { getPokemonByNumber } from '../services/pokemonService';
 
 const PokemonDetailContainerGrid = styled(Grid)(() => ({
@@ -92,6 +93,22 @@ const PokemonDetailPage = () => {
                 <Grid item xs={3}>
                   <Scale className='info-icon' /> weight:
                   <span className='info'> {`${pokemon?.weight / 10}kg`}</span>
+                </Grid>
+                <Grid item xs={12}>
+                  <Grid container>
+                    <Grid xs={2}>
+                      <FrontBackPokemonImg
+                        frontImg={pokemon?.sprites?.front_default}
+                        backImg={pokemon?.sprites?.back_default}
+                      />
+                    </Grid>
+                    <Grid xs={2}>
+                      <FrontBackPokemonImg
+                        frontImg={pokemon?.sprites?.front_shiny}
+                        backImg={pokemon?.sprites?.back_shiny}
+                      />
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Grid>
             </PokemonInfoGrid>

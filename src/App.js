@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Grid } from '@mui/material';
 import Container from '@mui/material/Container';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import GifControlledFormPage from './pages/GifControlledFormPage';
 import GifPage from './pages/GifPage';
 import HomePage from './pages/HomePage';
 import PokemonDetailPage from './pages/PokemonDetailPage';
@@ -50,6 +51,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='gifs' element={<GifPage />} />
+        <Route path='gifs-controlled' element={<GifControlledFormPage />} />
         <Route path='pokemon' element={<PokemonPage />} />
         <Route path='video' element={<VideoPage />} />
         <Route path='pokemon/:number' element={<PokemonDetailPage />} />

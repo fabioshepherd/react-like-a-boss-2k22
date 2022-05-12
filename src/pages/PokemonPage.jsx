@@ -16,7 +16,7 @@ const PokemonPage = () => {
 
   const prepareData = async () => {
     try {
-      const limit = 151;
+      const limit = 400;
       const pokemonResponse = await getPokemonList(limit);
 
       setPokemons(pokemonResponse.data?.results);
