@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageTitle Test 1`] = `
+<div
+  className="css-cc5o4n"
+>
+  <h3
+    className="MuiTypography-root MuiTypography-h3 css-gepadz-MuiTypography-root"
+  >
+    Prova
+  </h3>
+</div>
+`;
