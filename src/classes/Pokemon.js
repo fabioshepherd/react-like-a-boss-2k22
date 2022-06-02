@@ -40,4 +40,19 @@ export class Pokemon {
             hp: this.#hp
         }
     }
+
+    // 5
+    playSound()
+    {
+        return "roar"
+    }
+
+    // 5
+    attack()
+    {
+        for(let i = 0; i <= 5; i++)
+        {
+            this.playSound()
+        }
+    }
 }

@@ -33,4 +33,17 @@ describe("Pokemon Test", () => {
       console.log(bulbasaur.asObject())
     expect(bulbasaur.asObject()).toBe({ name: "bulbasaur", hp: 100 }); // toBe --> toEqual
   });
+
+  test("attack function", () => {
+      // function spy
+      const playSoundMocked = jest.spyOn(bulbasaur,"playSound");
+
+      // function execution  
+      bulbasaur.attack();
+
+      // assertion
+      expect(playSoundMocked).toHaveBeenCalledTimes(5)
+
+
+  })
 });
