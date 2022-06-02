@@ -13,6 +13,7 @@ const PokemonCard = ({ number, name, onClick }) => {
         cursor: 'pointer',
       }}
       onClick={onClick}
+      data-testid={"pokemonCard"}
     >
       <Grid item xs='auto' sx={{ marginBottom: '8px' }}>
         <Typography variant='h5'>{number}</Typography>
