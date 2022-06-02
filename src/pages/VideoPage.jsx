@@ -16,7 +16,7 @@ import {
 const VideoPage = () => {
   const videoRef = useRef();
 
-  const [currentVideoSrc, setCurrentVideoSrc] = useState(videoGandalf);
+  const [currentVideoSrc, setCurrentVideoSrc] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [showFirstVideo, setShowFirstVideo] = useState(true);
