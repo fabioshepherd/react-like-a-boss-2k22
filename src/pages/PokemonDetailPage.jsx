@@ -83,7 +83,7 @@ const PokemonDetailPage = () => {
                 </Grid>
                 <Grid item xs={12}>
                   {pokemon?.types.map((el, i) => (
-                    <Chip label={el.type.name} className='pokemon-type' />
+                    <Chip label={el.type.name} className='pokemon-type' key={i} />
                   ))}
                 </Grid>
                 <Grid item xs={3}>
@@ -96,13 +96,13 @@ const PokemonDetailPage = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <Grid container>
-                    <Grid xs={2}>
+                    <Grid item xs={2}>
                       <FrontBackPokemonImg
                         frontImg={pokemon?.sprites?.front_default}
                         backImg={pokemon?.sprites?.back_default}
                       />
                     </Grid>
-                    <Grid xs={2}>
+                    <Grid item xs={2}>
                       <FrontBackPokemonImg
                         frontImg={pokemon?.sprites?.front_shiny}
                         backImg={pokemon?.sprites?.back_shiny}
