@@ -136,7 +136,7 @@ const GifPage = () => {
         {gifs.length > 0 &&
           gifs.map((gif, i) => (
             <Grid item xs={3} sm={2} key={i} sx={{ aspectRatio: '1 / 1' }}>
-              <GifImg src={gif.media[0].mediumgif.url} />
+              <GifImg src={gif.media[0].mediumgif.url} data-testid="gifElement" />
             </Grid>
           ))}
       </Grid>

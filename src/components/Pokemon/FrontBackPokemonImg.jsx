@@ -19,6 +19,7 @@ const FrontBackPokemonImg = ({ frontImg, backImg }) => {
       onMouseLeave={() => {
         setSrc(frontImg);
       }}
+      data-testid="frontBackPokemonImg"
     />
   );
 };

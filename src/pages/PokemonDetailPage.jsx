@@ -72,6 +72,7 @@ const PokemonDetailPage = () => {
                 src={
                   pokemon?.sprites?.other?.['official-artwork']?.front_default
                 }
+                data-testid="pokemonDetailPageImage"
               />
             </PokemonImageGrid>
             <PokemonInfoGrid item xs={8}>
