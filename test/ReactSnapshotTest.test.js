@@ -4,6 +4,8 @@ import PokemonCard from "../src/components/Pokemon/PokemonCard";
 import PokemonDetailPage from "../src/pages/PokemonDetailPage";
 import { setTimeout } from "timers/promises";
 import VideoPage from "../src/pages/VideoPage";
+import PokemonPage from "../src/pages/PokemonPage";
+import axios from "axios";
 
 describe("Snapshot Tests", () => {
 
@@ -68,3 +70,51 @@ describe("Snapshot Tests", () => {
     });
   });
 });
+
+// jest.setTimeout(100000);
+describe("Object structure Tests", () => {
+  test("api result structure", async () => {
+    const apiCallResult = await axios.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+    console.log(apiCallResult)
+    
+    // prima delle struttura, testiamo che sia ok e che ci sia un risultato
+    expect(apiCallResult.status).toBe(200);
+    expect(apiCallResult.data).not.toBeNull()
+    expect(apiCallResult.data).not.toBeUndefined()
+
+    // testiamo la struttura dell'oggetto restituito
+    const responseBody = apiCallResult.data;
+
+    // proviamo a salvarlo in uno spapshot
+    // il test fallirà sempre!!
+    //expect(responseBody).toMatchSnapshot();
+
+    // quindi non ha senso fare un test sui valori
+    // ma piu sulla struttura
+
+    const currencyStructure = {
+      code: expect.any(String),
+      symbol: expect.any(String),
+      rate: expect.any(String),
+      description: expect.any(String),
+      rate_float: expect.any(Number),
+     // rate_float_2: expect.any(Number)
+    }
+
+    expect(responseBody).toMatchSnapshot({
+      time: {
+        updated: expect.any(String),
+        updatedISO: expect.any(String),
+        updateduk: expect.any(String)
+      },
+      disclaimer: expect.any(String),
+      chartName: "Bitcoin",
+      //poi
+      bpi: {
+        USD: currencyStructure,
+        GBP: currencyStructure,
+        EUR: currencyStructure
+      }
+    })
+  })
+})

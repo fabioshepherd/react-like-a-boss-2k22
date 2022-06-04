@@ -219,7 +219,7 @@ describe("RTL TEST", () => {
     await waitFor(() => expect(screen.queryAllByTestId("gifElement")).toHaveLength(10))
   });
 
-  test.only("VidePage Test", async  () => {
+  test("VidePage Test", async  () => {
     render(<VideoPage />);
 
     // screen.debug();
