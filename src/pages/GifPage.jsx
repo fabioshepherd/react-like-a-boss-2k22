@@ -81,7 +81,7 @@ const GifPage = () => {
   return (
     <>
       <PageTitle title={'Random Gifs!'} />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="gifPageForm">
         <Grid
           container
           spacing={2}
@@ -96,6 +96,7 @@ const GifPage = () => {
               name='keyword'
               required
               autoFocus
+              data-testid="keywordInput"
             />
           </Grid>
           <Grid item>
@@ -105,6 +106,7 @@ const GifPage = () => {
               name='limit'
               type='number'
               inputProps={{ min: 0, max: 50 }}
+              data-testid="limitInput"
             />
           </Grid>
           <Grid item>
@@ -125,6 +127,7 @@ const GifPage = () => {
               type='submit'
               startIcon={isLoading ? <LoadingIcon /> : <Search />}
               size='large'
+              data-testid="searchButton"
             >
               Search
             </Button>
