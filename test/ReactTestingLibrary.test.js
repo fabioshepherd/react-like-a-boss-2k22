@@ -13,6 +13,9 @@ import { createMemoryHistory } from "history";
 import PokemonDetailPage from "../src/pages/PokemonDetailPage";
 import GifPage from "../src/pages/GifPage";
 import FrontBackPokemonImg from "../src/components/Pokemon/FrontBackPokemonImg";
+import VideoPage from "../src/pages/VideoPage";
+import videoGandalf from '../assets/video.mp4';
+import videoCowboy from '../assets/video2.mp4';
 
 describe("RTL TEST", () => {
   test("PageTitle Test", () => {
@@ -87,8 +90,10 @@ describe("RTL TEST", () => {
 
     screen.debug();
 
+    //inizialmente deve esserci il caricamento
     expect(screen.getByText("Caricamento...")).toBeInTheDocument();
 
+    // quando la pagina viene caricata dopo il useEffect
     await screen.findByTestId("pokemonDetailPageImage");
 
     screen.debug();
@@ -129,7 +134,7 @@ describe("RTL TEST", () => {
     );
   });
 
-  test.only("GifPage Test", async () => {
+  test("GifPage Test", async () => {
     render(<GifPage />);
 
     screen.debug();
@@ -213,4 +218,48 @@ describe("RTL TEST", () => {
 
     await waitFor(() => expect(screen.queryAllByTestId("gifElement")).toHaveLength(10))
   });
+
+  test.only("VidePage Test", async  () => {
+    render(<VideoPage />);
+
+    // screen.debug();
+
+    // controllo presenza container video
+    const videoContainer = screen.getByTestId("videoContainer");
+    expect(videoContainer).toBeInTheDocument();
+
+    // controllo presenza pulsanti
+    const changeVideoButton = screen.getByRole("changeVideoButton")
+    expect(changeVideoButton).toBeInTheDocument();
+
+    const playPauseButton = screen.getByRole("playPauseButton")
+    expect(playPauseButton).toBeInTheDocument();
+
+    const muteButton = screen.getByRole("muteButton");
+    expect(muteButton).toBeInTheDocument();
+
+    const restartButton = screen.getByRole("restartButton");
+    expect(restartButton).toBeInTheDocument();
+
+    // controllo che il video inizialmente non abbia src
+    expect(videoContainer).toHaveAttribute("src", undefined)
+
+    // video src a gandalf
+    await waitFor(() => expect(videoContainer).toHaveAttribute("src", videoGandalf))
+    expect(videoContainer).toHaveAttribute("src", videoGandalf)
+
+    // click sul pulsante di cambio video
+    fireEvent.click(changeVideoButton);
+
+    // video src a gandalf
+    await waitFor(() => expect(videoContainer).toHaveAttribute("src", videoCowboy))
+    expect(videoContainer).toHaveAttribute("src", videoCowboy)
+
+    // click sul pulsante di cambio video
+    fireEvent.click(changeVideoButton);
+
+    // video src a gandalf
+    await waitFor(() => expect(videoContainer).toHaveAttribute("src", videoGandalf))
+    expect(videoContainer).toHaveAttribute("src", videoGandalf)
+  })
 });

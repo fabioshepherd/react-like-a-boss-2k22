@@ -67,12 +67,13 @@ const VideoPage = () => {
             playsInline
             muted={isMuted}
             loop
+            data-testid="videoContainer"
           />
         </Grid>
         <Grid item>
           <Grid container>
             <Grid item>
-              <IconButton onClick={changeVideo}>
+              <IconButton onClick={changeVideo} role="changeVideoButton">
                 {showFirstVideo ? (
                   <LooksTwo fontSize='large' />
                 ) : (
@@ -81,16 +82,16 @@ const VideoPage = () => {
               </IconButton>
             </Grid>
             <Grid item>
-              <IconButton onClick={isPlaying ? handlePause : handlePlay}>
+              <IconButton onClick={isPlaying ? handlePause : handlePlay} role="playPauseButton" >
                 {isPlaying ? (
-                  <PauseCircleOutline fontSize='large' />
+                  <PauseCircleOutline fontSize='large'  />
                 ) : (
                   <PlayCircleOutline fontSize='large' />
                 )}
               </IconButton>
             </Grid>
             <Grid item>
-              <IconButton onClick={handleMute}>
+              <IconButton onClick={handleMute} role="muteButton">
                 {isMuted ? (
                   <VolumeMute fontSize='large' />
                 ) : (
@@ -99,7 +100,7 @@ const VideoPage = () => {
               </IconButton>
             </Grid>
             <Grid item>
-              <IconButton onClick={handleRestart}>
+              <IconButton onClick={handleRestart} role="restartButton">
                 <RestartAlt fontSize='large' />
               </IconButton>
             </Grid>
