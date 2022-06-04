@@ -129,38 +129,27 @@ describe("RTL TEST", () => {
     );
   });
 
-  test("GifPage Test", async () => {
+  test.only("GifPage Test", async () => {
     render(<GifPage />);
 
-  //  screen.debug();
+    screen.debug();
 
     // test sui gif element
     // all'ingresso della pagina non devono essere gifElement
     expect(screen.queryAllByTestId("gifElement")).toHaveLength(0);
 
     // attendo che vengano renderizzati
-    await screen.findAllByTestId("gifElement");
-
     // gli elementi devono essere 50 (da limit)
-    expect(screen.queryAllByTestId("gifElement")).toHaveLength(50);
+    await waitFor(() => expect(screen.queryAllByTestId("gifElement")).toHaveLength(50))
+   expect(screen.queryAllByTestId("gifElement")).toHaveLength(50)
 
     // elementi di interazione
     expect(screen.getByTestId("keywordInput")).toBeInTheDocument();
-    //expect(within(screen.getByTestId("keywordInput")).getByRole('input')).toBeInTheDocument()
-    //expect(within(screen.getByTestId("keywordInput")).getByRole('textbox')).toBeInTheDocument()
     expect(
-      screen.getByTestId("keywordInput").getElementsByTagName("input")[0]
-    ).toBeInTheDocument();
-    expect(
-      screen.getByTestId("keywordInput").getElementsByTagName("input")[0]
+      screen.getByTestId("keywordInput")
     ).toBeRequired(); //required
 
     expect(screen.getByTestId("limitInput")).toBeInTheDocument();
-    //expect(within(screen.getByTestId("limitInput")).getByRole('input')).toBeInTheDocument()
-    //expect(within(screen.getByTestId("limitInput")).getByRole('spinbutton')).toBeInTheDocument()
-    expect(
-      screen.getByTestId("limitInput").getElementsByTagName("input")[0]
-    ).toBeInTheDocument();
 
     expect(screen.getByTestId("searchButton")).toBeInTheDocument();
 
@@ -168,35 +157,48 @@ describe("RTL TEST", () => {
     expect(screen.getByTestId("gifPageForm")).toBeInTheDocument();
 
     // click a vuoto
-    fireEvent.click(screen.getByTestId("searchButton"));
     // non deve essere richiamata la funzione di submit
     const oldSubmitFunction = screen.getByTestId("gifPageForm").onsubmit
     const mockedSubmitFunction = jest.fn(oldSubmitFunction);
     screen.getByTestId("gifPageForm").onsubmit = mockedSubmitFunction;
+
+    // click a vuoto
+    fireEvent.click(screen.getByTestId("searchButton"));
     expect(mockedSubmitFunction).toHaveBeenCalledTimes(0);
 
 
     // inseriamo una keyword e un limite invalido
-    await userEvent.type(screen.getByTestId("keywordInput").getElementsByTagName("input")[0],"ciao")
-    await userEvent.type(screen.getByTestId("limitInput").getElementsByTagName("input")[0],"-1")
+    await userEvent.type(screen.getByTestId("keywordInput"),"ciao")
+    await userEvent.type(screen.getByTestId("limitInput"),"-1")
+
+    expect(screen.getByTestId("keywordInput")).toHaveValue("ciao")
+    expect(screen.getByTestId("limitInput")).toHaveValue(-1)
+
     fireEvent.click(screen.getByTestId("searchButton"));
     expect(mockedSubmitFunction).toHaveBeenCalledTimes(0);
 
     // inseriamo una keyword e un limite invalido
-    await userEvent.clear(screen.getByTestId("keywordInput").getElementsByTagName("input")[0])
-    await userEvent.clear(screen.getByTestId("limitInput").getElementsByTagName("input")[0])
+    await userEvent.clear(screen.getByTestId("keywordInput"))
+    await userEvent.clear(screen.getByTestId("limitInput"))
 
-    await userEvent.type(screen.getByTestId("keywordInput").getElementsByTagName("input")[0],"ciao")
-    await userEvent.type(screen.getByTestId("limitInput").getElementsByTagName("input")[0],"51")
+    await userEvent.type(screen.getByTestId("keywordInput"),"ciao")
+    await userEvent.type(screen.getByTestId("limitInput"),"51")
+
+    expect(screen.getByTestId("keywordInput")).toHaveValue("ciao")
+    expect(screen.getByTestId("limitInput")).toHaveValue(51)
+
     fireEvent.click(screen.getByTestId("searchButton"));
     expect(mockedSubmitFunction).toHaveBeenCalledTimes(0);
 
     // inseriamo una keyword e un limite valido
-    await userEvent.clear(screen.getByTestId("keywordInput").getElementsByTagName("input")[0])
-    await userEvent.clear(screen.getByTestId("limitInput").getElementsByTagName("input")[0])
+    await userEvent.clear(screen.getByTestId("keywordInput"))
+    await userEvent.clear(screen.getByTestId("limitInput"))
 
-    await userEvent.type(screen.getByTestId("keywordInput").getElementsByTagName("input")[0],"ciao",{delay: 500})
-    await userEvent.type(screen.getByTestId("limitInput").getElementsByTagName("input")[0],"10",{delay: 500})
+    await userEvent.type(screen.getByTestId("keywordInput"),"ciao")
+    await userEvent.type(screen.getByTestId("limitInput"),"10")
+
+    expect(screen.getByTestId("keywordInput")).toHaveValue("ciao")
+    expect(screen.getByTestId("limitInput")).toHaveValue(10)
 
     await userEvent.click(screen.getByTestId("searchButton"));
   
@@ -209,6 +211,6 @@ describe("RTL TEST", () => {
     // gli elementi devono essere 50 (da limit)
     //expect(screen.queryAllByTestId("gifElement")).toHaveLength(50);
 
-    //await waitFor(() => expect(screen.queryAllByTestId("gifElement")).toHaveLength(25))
+    await waitFor(() => expect(screen.queryAllByTestId("gifElement")).toHaveLength(10))
   });
 });
