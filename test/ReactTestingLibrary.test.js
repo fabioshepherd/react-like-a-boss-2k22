@@ -262,4 +262,28 @@ describe("RTL TEST", () => {
     await waitFor(() => expect(videoContainer).toHaveAttribute("src", videoGandalf))
     expect(videoContainer).toHaveAttribute("src", videoGandalf)
   })
+
+  test("PokemonCard Test Callbacks", () => {
+    // predisposizione mocked function
+    const mockedCallback = jest.fn();
+
+    render(<PokemonCard name={"nome"} number={1234} onClick={mockedCallback} />);
+    screen.debug();
+    
+    // cerco l'elemento con test-id pokemon card
+    const pokemonCardElement = screen.getByTestId("pokemonCard")
+    expect(pokemonCardElement).toBeInTheDocument();
+
+    // prima del click non deve essere chiamata
+    expect(mockedCallback).toHaveBeenCalledTimes(0);
+
+    // eseguo il click
+    fireEvent.click(pokemonCardElement)
+
+    // dopo il click la funzione deve essere stata chiamata una volta
+    expect(mockedCallback).toHaveBeenCalledTimes(1);
+
+     // altro modo per vedere chiamata a funzione
+     console.log("mockedCallback.mock.calls.length: ",mockedCallback.mock.calls.length)
+  });
 });
