@@ -9,6 +9,14 @@ import axios from "axios";
 
 describe("Snapshot Tests", () => {
 
+  test("First Snapshot Test", () => {
+    const component = renderer.create(<div> Hello Snapshot </div>)
+    const jsonComponent = component.toJSON();
+
+    expect(jsonComponent).toMatchSnapshot();
+
+  })
+
   // descrive dopo --> all'inizio solo il test
   test("PageTitle Test", () => {
     const component = renderer.create(<PageTitle title={"Titolo pagina"} />);
