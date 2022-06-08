@@ -47,9 +47,16 @@ export class Pokemon {
         return "roar"
     }
 
-    // 5
+    // 5 // 6
     attack()
     {
+        // 6
+        if(this.getHp() <= 0)
+        {
+            throw new Error("Pokemon is dead");
+        }
+
+        // playSound 5 volte
         for(let i = 0; i <= 5; i++)
         {
             this.playSound()
