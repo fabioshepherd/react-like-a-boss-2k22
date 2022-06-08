@@ -1,6 +1,12 @@
 // import fondamentali
-import { render, screen, fireEvent, within, waitFor } from "@testing-library/react";
-import userEvent from '@testing-library/user-event';
+import {
+  render,
+  screen,
+  fireEvent,
+  within,
+  waitFor,
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
@@ -14,8 +20,8 @@ import PokemonDetailPage from "../src/pages/PokemonDetailPage";
 import GifPage from "../src/pages/GifPage";
 import FrontBackPokemonImg from "../src/components/Pokemon/FrontBackPokemonImg";
 import VideoPage from "../src/pages/VideoPage";
-import videoGandalf from '../assets/video.mp4';
-import videoCowboy from '../assets/video2.mp4';
+import videoGandalf from "../assets/video.mp4";
+import videoCowboy from "../assets/video2.mp4";
 
 describe("RTL TEST", () => {
   test("PageTitle Test", () => {
@@ -145,14 +151,14 @@ describe("RTL TEST", () => {
 
     // attendo che vengano renderizzati
     // gli elementi devono essere 50 (da limit)
-    await waitFor(() => expect(screen.queryAllByTestId("gifElement")).toHaveLength(50))
-   expect(screen.queryAllByTestId("gifElement")).toHaveLength(50)
+    await waitFor(() =>
+      expect(screen.queryAllByTestId("gifElement")).toHaveLength(50)
+    );
+    expect(screen.queryAllByTestId("gifElement")).toHaveLength(50);
 
     // elementi di interazione
     expect(screen.getByTestId("keywordInput")).toBeInTheDocument();
-    expect(
-      screen.getByTestId("keywordInput")
-    ).toBeRequired(); //required
+    expect(screen.getByTestId("keywordInput")).toBeRequired(); //required
 
     expect(screen.getByTestId("limitInput")).toBeInTheDocument();
 
@@ -163,7 +169,7 @@ describe("RTL TEST", () => {
 
     // click a vuoto
     // non deve essere richiamata la funzione di submit
-    const oldSubmitFunction = screen.getByTestId("gifPageForm").onsubmit
+    const oldSubmitFunction = screen.getByTestId("gifPageForm").onsubmit;
     const mockedSubmitFunction = jest.fn(oldSubmitFunction);
     screen.getByTestId("gifPageForm").onsubmit = mockedSubmitFunction;
 
@@ -171,42 +177,41 @@ describe("RTL TEST", () => {
     fireEvent.click(screen.getByTestId("searchButton"));
     expect(mockedSubmitFunction).toHaveBeenCalledTimes(0);
 
-
     // inseriamo una keyword e un limite invalido
-    await userEvent.type(screen.getByTestId("keywordInput"),"ciao")
-    await userEvent.type(screen.getByTestId("limitInput"),"-1")
+    await userEvent.type(screen.getByTestId("keywordInput"), "ciao");
+    await userEvent.type(screen.getByTestId("limitInput"), "-1");
 
-    expect(screen.getByTestId("keywordInput")).toHaveValue("ciao")
-    expect(screen.getByTestId("limitInput")).toHaveValue(-1)
+    expect(screen.getByTestId("keywordInput")).toHaveValue("ciao");
+    expect(screen.getByTestId("limitInput")).toHaveValue(-1);
 
     fireEvent.click(screen.getByTestId("searchButton"));
     expect(mockedSubmitFunction).toHaveBeenCalledTimes(0);
 
     // inseriamo una keyword e un limite invalido
-    await userEvent.clear(screen.getByTestId("keywordInput"))
-    await userEvent.clear(screen.getByTestId("limitInput"))
+    await userEvent.clear(screen.getByTestId("keywordInput"));
+    await userEvent.clear(screen.getByTestId("limitInput"));
 
-    await userEvent.type(screen.getByTestId("keywordInput"),"ciao")
-    await userEvent.type(screen.getByTestId("limitInput"),"51")
+    await userEvent.type(screen.getByTestId("keywordInput"), "ciao");
+    await userEvent.type(screen.getByTestId("limitInput"), "51");
 
-    expect(screen.getByTestId("keywordInput")).toHaveValue("ciao")
-    expect(screen.getByTestId("limitInput")).toHaveValue(51)
+    expect(screen.getByTestId("keywordInput")).toHaveValue("ciao");
+    expect(screen.getByTestId("limitInput")).toHaveValue(51);
 
     fireEvent.click(screen.getByTestId("searchButton"));
     expect(mockedSubmitFunction).toHaveBeenCalledTimes(0);
 
     // inseriamo una keyword e un limite valido
-    await userEvent.clear(screen.getByTestId("keywordInput"))
-    await userEvent.clear(screen.getByTestId("limitInput"))
+    await userEvent.clear(screen.getByTestId("keywordInput"));
+    await userEvent.clear(screen.getByTestId("limitInput"));
 
-    await userEvent.type(screen.getByTestId("keywordInput"),"ciao")
-    await userEvent.type(screen.getByTestId("limitInput"),"10")
+    await userEvent.type(screen.getByTestId("keywordInput"), "ciao");
+    await userEvent.type(screen.getByTestId("limitInput"), "10");
 
-    expect(screen.getByTestId("keywordInput")).toHaveValue("ciao")
-    expect(screen.getByTestId("limitInput")).toHaveValue(10)
+    expect(screen.getByTestId("keywordInput")).toHaveValue("ciao");
+    expect(screen.getByTestId("limitInput")).toHaveValue(10);
 
     await userEvent.click(screen.getByTestId("searchButton"));
-  
+
     //screen.debug();
     expect(mockedSubmitFunction).toHaveBeenCalledTimes(1);
 
@@ -216,10 +221,12 @@ describe("RTL TEST", () => {
     // gli elementi devono essere 50 (da limit)
     //expect(screen.queryAllByTestId("gifElement")).toHaveLength(50);
 
-    await waitFor(() => expect(screen.queryAllByTestId("gifElement")).toHaveLength(10))
+    await waitFor(() =>
+      expect(screen.queryAllByTestId("gifElement")).toHaveLength(10)
+    );
   });
 
-  test("VidePage Test", async  () => {
+  test("VidePage Test", async () => {
     render(<VideoPage />);
 
     // screen.debug();
@@ -229,10 +236,10 @@ describe("RTL TEST", () => {
     expect(videoContainer).toBeInTheDocument();
 
     // controllo presenza pulsanti
-    const changeVideoButton = screen.getByRole("changeVideoButton")
+    const changeVideoButton = screen.getByRole("changeVideoButton");
     expect(changeVideoButton).toBeInTheDocument();
 
-    const playPauseButton = screen.getByRole("playPauseButton")
+    const playPauseButton = screen.getByRole("playPauseButton");
     expect(playPauseButton).toBeInTheDocument();
 
     const muteButton = screen.getByRole("muteButton");
@@ -242,48 +249,59 @@ describe("RTL TEST", () => {
     expect(restartButton).toBeInTheDocument();
 
     // controllo che il video inizialmente non abbia src
-    expect(videoContainer).toHaveAttribute("src", undefined)
+    expect(videoContainer).toHaveAttribute("src", undefined);
 
     // video src a gandalf
-    await waitFor(() => expect(videoContainer).toHaveAttribute("src", videoGandalf))
-    expect(videoContainer).toHaveAttribute("src", videoGandalf)
+    await waitFor(() =>
+      expect(videoContainer).toHaveAttribute("src", videoGandalf)
+    );
+    expect(videoContainer).toHaveAttribute("src", videoGandalf);
 
     // click sul pulsante di cambio video
     fireEvent.click(changeVideoButton);
 
     // video src a gandalf
-    await waitFor(() => expect(videoContainer).toHaveAttribute("src", videoCowboy))
-    expect(videoContainer).toHaveAttribute("src", videoCowboy)
+    await waitFor(() =>
+      expect(videoContainer).toHaveAttribute("src", videoCowboy)
+    );
+    expect(videoContainer).toHaveAttribute("src", videoCowboy);
 
     // click sul pulsante di cambio video
     fireEvent.click(changeVideoButton);
 
     // video src a gandalf
-    await waitFor(() => expect(videoContainer).toHaveAttribute("src", videoGandalf))
-    expect(videoContainer).toHaveAttribute("src", videoGandalf)
-  })
+    await waitFor(() =>
+      expect(videoContainer).toHaveAttribute("src", videoGandalf)
+    );
+    expect(videoContainer).toHaveAttribute("src", videoGandalf);
+  });
 
   test("PokemonCard Test Callbacks", () => {
     // predisposizione mocked function
     const mockedCallback = jest.fn();
 
-    render(<PokemonCard name={"nome"} number={1234} onClick={mockedCallback} />);
+    render(
+      <PokemonCard name={"nome"} number={1234} onClick={mockedCallback} />
+    );
     screen.debug();
-    
+
     // cerco l'elemento con test-id pokemon card
-    const pokemonCardElement = screen.getByTestId("pokemonCard")
+    const pokemonCardElement = screen.getByTestId("pokemonCard");
     expect(pokemonCardElement).toBeInTheDocument();
 
     // prima del click non deve essere chiamata
     expect(mockedCallback).toHaveBeenCalledTimes(0);
 
     // eseguo il click
-    fireEvent.click(pokemonCardElement)
+    fireEvent.click(pokemonCardElement);
 
     // dopo il click la funzione deve essere stata chiamata una volta
     expect(mockedCallback).toHaveBeenCalledTimes(1);
 
-     // altro modo per vedere chiamata a funzione
-     console.log("mockedCallback.mock.calls.length: ",mockedCallback.mock.calls.length)
+    // altro modo per vedere chiamata a funzione
+    console.log(
+      "mockedCallback.mock.calls.length: ",
+      mockedCallback.mock.calls.length
+    );
   });
 });

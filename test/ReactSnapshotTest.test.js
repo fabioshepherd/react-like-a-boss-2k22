@@ -8,14 +8,12 @@ import PokemonPage from "../src/pages/PokemonPage";
 import axios from "axios";
 
 describe("Snapshot Tests", () => {
-
   test("First Snapshot Test", () => {
-    const component = renderer.create(<div> Hello Snapshot </div>)
+    const component = renderer.create(<div> Hello Snapshot </div>);
     const jsonComponent = component.toJSON();
 
     expect(jsonComponent).toMatchSnapshot();
-
-  })
+  });
 
   // descrive dopo --> all'inizio solo il test
   test("PageTitle Test", () => {
@@ -82,13 +80,15 @@ describe("Snapshot Tests", () => {
 // jest.setTimeout(100000);
 describe("Object structure Tests", () => {
   test("api result structure", async () => {
-    const apiCallResult = await axios.get("https://api.coindesk.com/v1/bpi/currentprice.json")
-    console.log(apiCallResult)
-    
+    const apiCallResult = await axios.get(
+      "https://api.coindesk.com/v1/bpi/currentprice.json"
+    );
+    console.log(apiCallResult);
+
     // prima delle struttura, testiamo che sia ok e che ci sia un risultato
     expect(apiCallResult.status).toBe(200);
-    expect(apiCallResult.data).not.toBeNull()
-    expect(apiCallResult.data).not.toBeUndefined()
+    expect(apiCallResult.data).not.toBeNull();
+    expect(apiCallResult.data).not.toBeUndefined();
 
     // testiamo la struttura dell'oggetto restituito
     const responseBody = apiCallResult.data;
@@ -106,14 +106,14 @@ describe("Object structure Tests", () => {
       rate: expect.any(String),
       description: expect.any(String),
       rate_float: expect.any(Number),
-     // rate_float_2: expect.any(Number)
-    }
+      // rate_float_2: expect.any(Number)
+    };
 
     expect(responseBody).toMatchSnapshot({
       time: {
         updated: expect.any(String),
         updatedISO: expect.any(String),
-        updateduk: expect.any(String)
+        updateduk: expect.any(String),
       },
       disclaimer: expect.any(String),
       chartName: "Bitcoin",
@@ -121,8 +121,8 @@ describe("Object structure Tests", () => {
       bpi: {
         USD: currencyStructure,
         GBP: currencyStructure,
-        EUR: currencyStructure
-      }
-    })
-  })
-})
+        EUR: currencyStructure,
+      },
+    });
+  });
+});

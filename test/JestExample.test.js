@@ -7,7 +7,6 @@ beforeEach(() => {
 });
 
 describe("Pokemon Test", () => {
-
   // 1
   test("Variable type", () => {
     expect(bulbasaur).toBeInstanceOf(Pokemon);
@@ -37,27 +36,26 @@ describe("Pokemon Test", () => {
   // 5
   // attack function calls playSound 5 times
   test("attack function", () => {
-      // function spy
-      const playSoundMocked = jest.spyOn(bulbasaur,"playSound");
+    // function spy
+    const playSoundMocked = jest.spyOn(bulbasaur, "playSound");
 
-      // function execution  
-      bulbasaur.attack();
+    // function execution
+    bulbasaur.attack();
 
-      // assertion
-      expect(playSoundMocked).toHaveBeenCalledTimes(5)
-  })
+    // assertion
+    expect(playSoundMocked).toHaveBeenCalledTimes(5);
+  });
 
   // 6
   // problema getHp ritorna 100 ==> mockiamo il valore restituito
   test("attack function for dead pokemon", () => {
     // function spy
-    const getHpMocked =  jest.spyOn(bulbasaur,"getHp");
-    getHpMocked.mockReturnValue(0)
+    const getHpMocked = jest.spyOn(bulbasaur, "getHp");
+    getHpMocked.mockReturnValue(0);
 
-    console.log("bulbasaur.getHp(): ", bulbasaur.getHp())
-
+    console.log("bulbasaur.getHp(): ", bulbasaur.getHp());
 
     // assertion
     expect(bulbasaur.attack).toThrow();
-})
+  });
 });
