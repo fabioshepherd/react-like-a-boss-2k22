@@ -12,6 +12,11 @@ afterEach(() => {
   console.log("After each test");
 });
 
+// IT o TEST ==> dire che sono uguali
+
+// piu describe => piu suite di test
+// piu test case
+// piu asserzioni dentro un singolo test case
 describe("First Test Suite", () => {
   test("First Test Case", () => {
     expect(3 + 2).toBe(5);
