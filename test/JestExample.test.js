@@ -8,7 +8,9 @@ beforeEach(() => {
 
 describe("Pokemon Test", () => {
   // 1
+  // test sul tipo della variabile
   test("Variable type", () => {
+    //bulbasaur = new Pokemon("bulbasaur", 100);
     expect(bulbasaur).toBeInstanceOf(Pokemon);
   });
 
