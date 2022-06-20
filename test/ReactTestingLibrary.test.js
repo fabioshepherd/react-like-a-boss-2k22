@@ -9,7 +9,8 @@ import {
 import userEvent from "@testing-library/user-event";
 
 import React from "react";
-import "@testing-library/jest-dom/extend-expect";
+import "@testing-library/jest-dom/extend-expect";  // to obtain all extended jest matchers !! IMPORTANTE
+
 // altri import
 import PageTitle from "../src/components/common/PageTitle";
 import PokemonCard from "../src/components/Pokemon/PokemonCard";

@@ -6,7 +6,7 @@ import { setTimeout } from "timers/promises";
 import VideoPage from "../src/pages/VideoPage";
 import PokemonPage from "../src/pages/PokemonPage";
 import axios from "axios";
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from "history";
 
 describe("Snapshot Tests", () => {
   test("First Snapshot Test", () => {
@@ -42,20 +42,26 @@ describe("Snapshot Tests", () => {
     expect(jsonRap).toMatchSnapshot();
   });
 
-  test("PokemonPage Test", () => {
+  test("PokemonPage Test", async () => {
     //const history = createMemoryHistory();
     //const component = renderer.create(<Router location={history.location} navigator={history}><PokemonPage /></Router>);
 
     const component = renderer.create(<PokemonPage />);
     expect(component.toJSON()).toMatchSnapshot();
 
-    // problema 1. routing 
+    // problema 1. routing
     // problema 2. non vengono renderizzati i 400 pokemon
 
-    // await setTimeout(1000);
+    // usare timeout corretto
+    // import { setTimeout } from "timers/promises";
 
-    // expect(component.toJSON()).toMatchSnapshot();
+    await renderer.act(async () => {
+      expect(component.toJSON()).toMatchSnapshot();
 
+      await setTimeout(3000);
+
+      expect(component.toJSON()).toMatchSnapshot();
+    });
   });
 
   test("PokemonDetailPage Test", async () => {
